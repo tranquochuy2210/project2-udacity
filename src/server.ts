@@ -38,7 +38,9 @@ import { hostname } from "os";
         .json({ success: false, msg: "URL must be provided" });
     }
     const imageLocalURL = await filterImageFromURL(imageURL);
-
+    setTimeout(() => {
+      deleteLocalFiles([imageLocalURL]);
+    }, 500);
     res.status(200).sendFile(imageLocalURL);
   });
   //! END @TODO1
